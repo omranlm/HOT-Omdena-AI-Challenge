@@ -1,0 +1,10 @@
+data
+checkpoints
+__pycache__
+env
+*egg*
+dist
+.idea
+clean-up.sh
+.ipynb_checkpoints
+build

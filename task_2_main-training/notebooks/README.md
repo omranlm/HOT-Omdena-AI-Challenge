@@ -1,0 +1,1 @@
+This directory contains the notebooks that will help to start with model training. Use them as a guidline in your training jounrey

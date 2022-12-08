@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>hotlib package &mdash; hotlib 1.0.25 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="Installation.html" />
+    <link rel="prev" title="Welcome to HOTlib’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> hotlib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">hotlib package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#hotlib-preprocess-function">hotlib.preprocess function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hotlib-georeference-function">hotlib.georeference function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hotlib-predict-function">hotlib.predict function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hotlib-polygonize-function">hotlib.polygonize function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hotlib-vectorize-function">hotlib.vectorize function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hotlib-stitch-function">hotlib.stitch function</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">hotlib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">hotlib package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/hotlib.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="hotlib-package">
+<h1>hotlib package<a class="headerlink" href="#hotlib-package" title="Permalink to this heading"></a></h1>
+<section id="hotlib-preprocess-function">
+<h2>hotlib.preprocess function<a class="headerlink" href="#hotlib-preprocess-function" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="hotlib.preprocess">
+<span class="sig-prename descclassname"><span class="pre">hotlib.</span></span><span class="sig-name descname"><span class="pre">preprocess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rasterize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rasterize_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">georeference_images</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#hotlib.preprocess" title="Permalink to this definition"></a></dt>
+<dd><p>Fully preprocess the input data.</p>
+<p>The preprocessed images and labels are in the EPSG:3857 projected
+coordinate system (‘WGS 84 / Pseudo-Mercator’, coordinates
+in meters).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_path</strong> – Path of the directory with input data.</p></li>
+<li><p><strong>output_path</strong> – Path of the directory where to put the preprocessed
+data. New directories will be created in this directory:
+“labels” - for the clipped GeoJSON labels,
+“chips” - for the georeferenced OAM images
+(if georeference_images=True), and the directories
+“binarymasks” and “grayscale_labels” if the corresponding
+rasterizing options are chosen.</p></li>
+<li><p><strong>rasterize</strong> – Whether to create the raster labels.</p></li>
+<li><p><strong>rasterize_options</strong> – A list with options how to rasterize the
+label, if rasterize=True. Possible options: “grayscale”
+(burn value will be 255, white buildings on black
+background), “binary” (burn value will be 1, can be used
+for the ramp model).
+If rasterize=False, rasterize_options will be ignored.</p></li>
+<li><p><strong>georeference_images</strong> – Whether to georeference the OAM images.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">preprocess</span><span class="p">(</span>
+    <span class="s2">&quot;data/region1_inputs&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;data/region1_preprocessed&quot;</span><span class="p">,</span>
+    <span class="n">rasterize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">rasterize_options</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;grayscale&quot;</span><span class="p">,</span> <span class="s2">&quot;binary&quot;</span><span class="p">],</span>
+    <span class="n">georeference_images</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="hotlib-georeference-function">
+<h2>hotlib.georeference function<a class="headerlink" href="#hotlib-georeference-function" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="hotlib.georeference">
+<span class="sig-prename descclassname"><span class="pre">hotlib.</span></span><span class="sig-name descname"><span class="pre">georeference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#hotlib.georeference" title="Permalink to this definition"></a></dt>
+<dd><p>Perform georeferencing and remove the fourth band from images (if any).</p>
+<p>The EPSG:3857 projected coordinate system is used
+(‘WGS 84 / Pseudo-Mercator’, coordinates in meters).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_path</strong> – Path of the directory where the input data are stored.</p></li>
+<li><p><strong>output_path</strong> – Path of the directory where the output data will go.</p></li>
+<li><p><strong>is_mask</strong> – Whether the image is binary or not.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">georeference</span><span class="p">(</span>
+    <span class="s2">&quot;data/prediction-dataset/5x5/1-19&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;data/georeferenced_input/1-19&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="hotlib-predict-function">
+<h2>hotlib.predict function<a class="headerlink" href="#hotlib-predict-function" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="hotlib.predict">
+<span class="sig-prename descclassname"><span class="pre">hotlib.</span></span><span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">checkpoint_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prediction_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#hotlib.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Predict masks for PNG images.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>checkpoint_path</strong> – Path where the weights of the model can be found.</p></li>
+<li><p><strong>input_path</strong> – Path of the directory where the images are stored.</p></li>
+<li><p><strong>prediction_path</strong> – Path of the directory where the predicted images will go.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">predict</span><span class="p">(</span>
+    <span class="s2">&quot;model_1_checkpt.tf&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;data/inputs_v2/4&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;data/predictions/4&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="hotlib-polygonize-function">
+<h2>hotlib.polygonize function<a class="headerlink" href="#hotlib-polygonize-function" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="hotlib.polygonize">
+<span class="sig-prename descclassname"><span class="pre">hotlib.</span></span><span class="sig-name descname"><span class="pre">polygonize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#hotlib.polygonize" title="Permalink to this definition"></a></dt>
+<dd><p>Polygonize raster tiles using AutoBFE’s algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_path</strong> – Path of the directory where the image files are stored.</p></li>
+<li><p><strong>output_path</strong> – Path of the output file.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">poygonize</span><span class="p">(</span><span class="s2">&quot;data/masks_v2/4&quot;</span><span class="p">,</span> <span class="s2">&quot;labels.geojson&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="hotlib-vectorize-function">
+<h2>hotlib.vectorize function<a class="headerlink" href="#hotlib-vectorize-function" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="hotlib.vectorize">
+<span class="sig-prename descclassname"><span class="pre">hotlib.</span></span><span class="sig-name descname"><span class="pre">vectorize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#hotlib.vectorize" title="Permalink to this definition"></a></dt>
+<dd><p>Vectorize raster tiles.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_path</strong> – Path of the directory where the TIF files are stored.</p></li>
+<li><p><strong>output_path</strong> – Path of the output file.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vectorize</span><span class="p">(</span><span class="s2">&quot;data/masks_v2/4&quot;</span><span class="p">,</span> <span class="s2">&quot;labels.geojson&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="hotlib-stitch-function">
+<h2>hotlib.stitch function<a class="headerlink" href="#hotlib-stitch-function" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="hotlib.stitch">
+<span class="sig-prename descclassname"><span class="pre">hotlib.</span></span><span class="sig-name descname"><span class="pre">stitch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#hotlib.stitch" title="Permalink to this definition"></a></dt>
+<dd><p>Stitch GeoTIF files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_path</strong> – Path of the directory where the TIF files are stored.</p></li>
+<li><p><strong>output_path</strong> – Path of the output file.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stitch</span><span class="p">(</span><span class="s2">&quot;data/masks_v2/4&quot;</span><span class="p">,</span> <span class="s2">&quot;labels.tif&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to HOTlib’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Omdena HOT-Challenge.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

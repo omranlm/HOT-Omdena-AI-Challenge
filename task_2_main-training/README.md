@@ -1,0 +1,1 @@
+This folder will contain the scripts for the model training. 

@@ -1,0 +1,54 @@
+[build-system]
+requires      = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hotlib"
+version = "1.0.32"
+description = "Utilities for an AI-assisted mapping tool developed for HOT."
+readme = "README.md"
+authors = [{ name = "Omdena", email = "project@omdena.com" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+]
+keywords = [
+    "preprocessing", "inference", 
+    "postprocessing", "stitching"
+]
+dependencies = [
+    "shapely", "GDAL", "numpy", 
+    "tensorflow", "Pillow", "geopandas", 
+    "rasterio", "mercantile", "tqdm", 
+    "rtree", "opencv-python"
+]
+requires-python = ">=3.7"
+
+    [project.optional-dependencies]
+    build = ["build", "twine"]
+    dev   = ["black", "bumpver", "isort"]
+
+    [project.urls]
+    repository    = "https://dagshub.com/Omdena/HOT"
+
+
+[tool.bumpver]
+current_version = "1.0.32"
+version_pattern = "MAJOR.MINOR.PATCH"
+commit_message  = "bump version {old_version} -> {new_version}"
+commit          = true
+tag             = true
+push            = false
+
+    [tool.bumpver.file_patterns]
+    "pyproject.toml" = [
+        'current_version = "{version}"',
+        'version = "{version}"',
+    ]
+
+[tool.isort]
+profile                   = "black"
+import_heading_stdlib     = "Standard library imports"
+import_heading_thirdparty = "Third party imports"
+import_heading_firstparty = "Reader imports"
